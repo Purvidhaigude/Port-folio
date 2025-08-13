@@ -16,31 +16,31 @@ const EducationSection = () => {
       institution: "GPA: 66.66",
       description: "Completed higher secondary education with Physics, Chemistry, Mathematics, and Biology, building strong analytical and problem-solving foundation.",
       status: "Completed",
-      highlights: ["Mathematics", "Physics", "Chemistry", "Biology"]
+      highlights: ["Mathematics", "Physics", "Chemistry"]
     }
   ];
 
   const timeline = [
     {
-      year: "2024",
+      year: "2025",
       title: "Advanced Projects & Internship Prep",
       description: "Building complex full-stack applications and preparing for internship opportunities",
       icon: "🚀"
     },
     {
-      year: "2023",
+      year: "2024",
       title: "Specialized Learning",
       description: "Deep dive into React.js, Python development, and AI/ML fundamentals",
       icon: "📚"
     },
     {
-      year: "2022",
+      year: "2023",
       title: "Started B.Tech Journey",
       description: "Began Computer Science degree, learned programming fundamentals",
       icon: "🎓"
     },
     {
-      year: "2021",
+      year: "2022",
       title: "Web Development Discovery", 
       description: "First introduction to HTML, CSS, and web development concepts",
       icon: "💻"

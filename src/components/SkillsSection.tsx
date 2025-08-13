@@ -17,7 +17,7 @@ const SkillsSection = () => {
       skills: [
         { name: "Python", level: 80, icon: "🐍" },
         { name: "SQL", level: 75, icon: "🗄️" },
-        { name: "Git", level: 70, icon: "📂" },
+        { name: "Node.js", level: 60, icon: "🚀" },
         { name: "REST APIs", level: 65, icon: "🔗" }
       ]
     },
@@ -27,7 +27,7 @@ const SkillsSection = () => {
         { name: "VS Code", level: 90, icon: "💻" },
         { name: "Figma", level: 70, icon: "🎯" },
         { name: "Bootstrap", level: 80, icon: "🌟" },
-        { name: "Node.js", level: 60, icon: "🚀" }
+        { name: "Git & github", level: 70, icon: "📂" }
       ]
     }
   ];

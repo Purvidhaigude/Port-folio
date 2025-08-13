@@ -16,7 +16,7 @@ const AboutSection = () => {
             
             <p className="text-lg text-muted-foreground leading-relaxed">
               I'm a passionate <span className="text-primary font-medium">Full Stack Developer</span> and 
-              third-year B.Tech Computer Science student with a strong foundation in web development. 
+              fourth-year B.Tech Computer Science student with a strong foundation in web development. 
               I love creating responsive, user-friendly interfaces that combine functionality with 
               beautiful design.
             </p>
@@ -59,7 +59,7 @@ const AboutSection = () => {
                   <div className="text-sm text-muted-foreground">Years of Study</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-primary mb-2">10+</div>
+                  <div className="text-3xl font-bold text-primary mb-2">4+</div>
                   <div className="text-sm text-muted-foreground">Projects Built</div>
                 </div>
                 <div className="text-center">
@@ -107,6 +107,7 @@ const AboutSection = () => {
               <div className="flex items-center gap-2 text-sm text-primary">
                 <span>🏆</span>
                 <span>8-Year Diploma in Kathak</span>
+                <span>Gracefull dancing through 10+ Years of kathak</span>
               </div>
             </Card>
           </div>

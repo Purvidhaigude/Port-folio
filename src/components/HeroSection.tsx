@@ -84,7 +84,7 @@ const HeroSection = () => {
           </div>
 
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed">
-            Third-year B.Tech Computer Science student with strong foundation in
+            Fourth-Year B.Tech Computer Science student with strong foundation in
             frontend web development and passion for creating responsive,
             user-friendly interfaces. Proficient in HTML, CSS, JavaScript, and
             React.js.
