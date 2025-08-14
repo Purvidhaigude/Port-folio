@@ -5,7 +5,7 @@ const EducationSection = () => {
     {
       period: "Jul 2022 - Present",
       degree: "B.Tech in Computer Science",
-      institution: "Raja Gandhi Proudyogiki Vishwavidyalaya (GPA: 6.65)",
+      institution: "Rajiv Gandhi Proudyogiki Vishwavidyalaya (GPA: 6.65)",
       description: "Currently pursuing Bachelor of Technology in Computer Science with focus on software development, data structures, algorithms, and web technologies.",
       status: "In Progress",
       highlights: ["Web Development", "Data Structures", "Software Engineering", "Database Systems"]
@@ -14,7 +14,7 @@ const EducationSection = () => {
       period: "Jul 2019 - May 2022",
       degree: "XII in PCMB/Board",
       institution: "GPA: 66.66",
-      description: "Completed higher secondary education with Physics, Chemistry, Mathematics, and Biology, building strong analytical and problem-solving foundation.",
+      description: "Completed higher secondary education with Physics, Chemistry, Mathematics building strong analytical and problem-solving foundation.",
       status: "Completed",
       highlights: ["Mathematics", "Physics", "Chemistry"]
     }
