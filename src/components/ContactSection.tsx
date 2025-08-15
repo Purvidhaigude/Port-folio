@@ -2,8 +2,20 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 
 const ContactSection = () => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+
+  const [loading, setLoading] = useState(false);
+
   const contactInfo = [
     {
       type: "Email",
@@ -31,10 +43,41 @@ const ContactSection = () => {
     }
   ];
 
+  // Handle Input Change
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  // Handle Form Submit
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted');
+    setLoading(true);
+
+    emailjs
+      .send(
+        "service_n2pmup5", // EmailJS Service ID
+        "template_xlejfom", // EmailJS Template ID
+        {
+          first_name: formData.firstName,
+          last_name: formData.lastName,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message
+        },
+        "l3_Yd-ULkkSm25fYG" // EmailJS Public Key
+      )
+      .then(
+        () => {
+          alert("Message sent successfully!");
+          setFormData({ firstName: '', lastName: '', email: '', subject: '', message: '' });
+          setLoading(false);
+        },
+        (error) => {
+          alert("Failed to send message. Please try again.");
+          console.error(error);
+          setLoading(false);
+        }
+      );
   };
 
   return (
@@ -82,39 +125,33 @@ const ContactSection = () => {
               ))}
             </div>
 
-           {/* Quick Actions */}
-<Card className="glass p-6">
-  <h4 className="text-lg font-semibold text-foreground mb-4">Quick Actions</h4>
-  <div className="flex flex-col sm:flex-row gap-3">
-
-    {/* Download Resume Button */}
-     <a
-      href="/resume_purvi_dhaigude%20(3).pdf" // Public folder me jo file ka naam hai wo same likho
-      download="Purvi_Dhaigude_Resume.pdf" // Download hone wale file ka naam
-      className="btn-hero flex-1 flex items-center justify-center"
-    >
-      <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-      </svg>
-      Download Resume
-    </a>
-
-    {/* LinkedIn Button */}
-    <a 
-      href="https://www.linkedin.com/in/purvi-dhaigude-6669b0271/" //LinkedIn link 
-      target="_blank"
-      rel="noopener noreferrer"
-      className="btn-outline-hero flex-1 flex items-center justify-center"
-    >
-      <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-      </svg>
-      LinkedIn Profile
-    </a>
-
-  </div>
-</Card>
-
+            {/* Quick Actions */}
+            <Card className="glass p-6">
+              <h4 className="text-lg font-semibold text-foreground mb-4">Quick Actions</h4>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <a
+                  href="/resume_purvi_dhaigude%20(3).pdf"
+                  download="Purvi_Dhaigude_Resume.pdf"
+                  className="btn-hero flex-1 flex items-center justify-center"
+                >
+                  <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                  Download Resume
+                </a>
+                <a 
+                  href="https://www.linkedin.com/in/purvi-dhaigude-6669b0271/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-outline-hero flex-1 flex items-center justify-center"
+                >
+                  <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  </svg>
+                  LinkedIn Profile
+                </a>
+              </div>
+            </Card>
 
             {/* Availability Status */}
             <Card className="glass p-6">
@@ -135,19 +172,21 @@ const ContactSection = () => {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="text-sm font-medium text-foreground mb-2 block">
-                    First Name
-                  </label>
+                  <label className="text-sm font-medium text-foreground mb-2 block">First Name</label>
                   <Input 
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleChange}
                     placeholder="John"
                     className="bg-secondary border-border focus:border-primary"
                   />
                 </div>
                 <div>
-                  <label className="text-sm font-medium text-foreground mb-2 block">
-                    Last Name
-                  </label>
+                  <label className="text-sm font-medium text-foreground mb-2 block">Last Name</label>
                   <Input 
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleChange}
                     placeholder="Doe"
                     className="bg-secondary border-border focus:border-primary"
                   />
@@ -155,42 +194,49 @@ const ContactSection = () => {
               </div>
 
               <div>
-                <label className="text-sm font-medium text-foreground mb-2 block">
-                  Email Address
-                </label>
+                <label className="text-sm font-medium text-foreground mb-2 block">Email Address</label>
                 <Input 
                   type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   placeholder="john@example.com"
                   className="bg-secondary border-border focus:border-primary"
                 />
               </div>
 
               <div>
-                <label className="text-sm font-medium text-foreground mb-2 block">
-                  Subject
-                </label>
+                <label className="text-sm font-medium text-foreground mb-2 block">Subject</label>
                 <Input 
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
                   placeholder="Internship Opportunity"
                   className="bg-secondary border-border focus:border-primary"
                 />
               </div>
 
               <div>
-                <label className="text-sm font-medium text-foreground mb-2 block">
-                  Message
-                </label>
+                <label className="text-sm font-medium text-foreground mb-2 block">Message</label>
                 <Textarea 
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
                   placeholder="Hi Purvi, I'd like to discuss an internship opportunity..."
                   rows={5}
                   className="bg-secondary border-border focus:border-primary resize-none"
                 />
               </div>
 
-              <Button type="submit" className="btn-hero w-full">
-                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                </svg>
-                Send Message
+              <Button type="submit" className="btn-hero w-full" disabled={loading}>
+                {loading ? "Sending..." : (
+                  <>
+                    <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                    </svg>
+                    Send Message
+                  </>
+                )}
               </Button>
             </form>
           </Card>
